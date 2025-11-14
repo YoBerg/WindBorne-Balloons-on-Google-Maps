@@ -1,5 +1,10 @@
 import express from 'express';
 import cors from 'cors';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -9,6 +14,10 @@ app.use(cors());
 
 // Parse JSON bodies
 app.use(express.json());
+
+// Serve static files from the React app build directory
+const distPath = join(__dirname, '..', 'dist');
+app.use(express.static(distPath));
 
 // Cache for API responses
 // Key: hour timestamp (rounded down to nearest hour)
@@ -111,6 +120,11 @@ app.get('/api/treasure/:id', async (req, res) => {
       message: error.message 
     });
   }
+});
+
+// Serve React app for all non-API routes (must be last)
+app.get('*', (req, res) => {
+  res.sendFile(join(distPath, 'index.html'));
 });
 
 // Start server

@@ -10,9 +10,10 @@ import GoogleMapComponent from './GoogleMap'
 async function fetchCoordinates(hoursAgo = 0) {
   // Format hoursAgo as two-digit string (00, 01, 02, etc.)
   const id = String(hoursAgo).padStart(2, '0')
+  // Use environment variable for API URL, fallback to relative path in production
   const apiUrl = import.meta.env.DEV 
     ? `http://localhost:3001/api/treasure/${id}`
-    : `http://localhost:3001/api/treasure/${id}` // In a production build, use hosted backend URL
+    : import.meta.env.VITE_API_URL || `/api/treasure/${id}`
   
   const response = await fetch(apiUrl)
   

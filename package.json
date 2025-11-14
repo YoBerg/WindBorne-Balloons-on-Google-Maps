@@ -9,7 +9,11 @@
     "preview": "vite preview",
     "backend": "cd backend && npm start",
     "backend:dev": "cd backend && npm run dev",
-    "dev:all": "concurrently \"npm run dev\" \"npm run backend:dev\""
+    "dev:all": "concurrently \"npm run dev\" \"npm run backend:dev\"",
+    "install:all": "npm install && cd backend && npm install",
+    "postinstall": "cd backend && npm install",
+    "build:all": "npm run build",
+    "start": "npm run build && cd backend && npm start"
   },
   "dependencies": {
     "@react-google-maps/api": "^2.19.3",
