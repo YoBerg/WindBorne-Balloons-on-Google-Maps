@@ -128,8 +128,8 @@ app.get('*', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Backend server running on http://localhost:${PORT}`);
-  console.log(`Proxy endpoint: http://localhost:${PORT}/api/treasure/:id`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Backend server running on http://0.0.0.0:${PORT}`);
+  console.log(`Proxy endpoint: http://0.0.0.0:${PORT}/api/treasure/:id`);
 });
 
