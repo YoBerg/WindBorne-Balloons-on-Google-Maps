@@ -1,0 +1,7 @@
+# Place your custom marker images here
+# Example: balloon-marker.png
+# Access via: /images/balloon-marker.png (or just /balloon-marker.png if in public root)
+# 
+# In Vite, files in the 'public' folder are served at the root URL
+# So public/images/marker.png is accessible at /images/marker.png
+
